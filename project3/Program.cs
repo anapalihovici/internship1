@@ -26,9 +26,9 @@ namespace project3
 
         public static string convert(int nr)
         {
+            string[] roman_numbers = new string[] { "M", "XM", "CM", "D", "XD", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
 
             int[] arabic_numbers = new int[] { 1000, 990, 900, 500, 490, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
-            string[] roman_numbers = new string[] { "M", "XM", "CM", "D", "XD", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
 
             string converted = "";
             int i = 0;
