@@ -43,19 +43,23 @@ namespace project2
 
             for (int k = 1; k <= i;k++ )
             {
-                System.Console.WriteLine("k: " + k + "i: "+ i);
                
-                do
-                { r = rnd.Next(employee_nr.Count); }
-                while (r == k || !(employee_nr.Contains(r)));
-                Console.WriteLine("r=" + r + "k=" + k);
-                Console.WriteLine("\t" + arr[k].first_name + " " + arr[k].family_name + " has been assigned: " + arr[r].first_name + " " + arr[r].family_name+"     ");
-                //Console.WriteLine("\t" + arr[r].first_name + " " + arr[r].family_name);
-              // employee_nr.Remove(r);
+                
+               // System.Console.WriteLine("k: " + k + "i: "+ (i+1));
+                System.Console.WriteLine("k: " + k );
+
                
+                 do
+                 { r = rnd.Next(employee_nr.Count); }
+                 while (employee_nr[r] == k || !(employee_nr.Contains(r)));
+                
+                // Console.WriteLine("r=" + x + "r=" + k);
+                Console.WriteLine("\t" + arr[k].first_name + " " + arr[k].family_name + " has been assigned: " + arr[employee_nr[r]].first_name + " " + arr[employee_nr[r]].family_name);
+          
+                employee_nr.Remove(employee_nr[r]);
+              
             }
                 
-
                 // Keep the console window open in debug mode.
                 Console.WriteLine("Press any key to exit.");
                 System.Console.ReadKey();
