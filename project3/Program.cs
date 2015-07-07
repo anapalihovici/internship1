@@ -1,4 +1,4 @@
-﻿//Problema 6
+﻿//Problem 6
 
 using System;
 using System.Collections.Generic;
