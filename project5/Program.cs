@@ -18,7 +18,7 @@ namespace project5
 
             List<string> words = new List<string>();
 
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ana.palihovici\Documents\Visual Studio 2013\Projects\project5\project5\new.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ana.palihovici\Documents\Visual Studio 2013\Projects\project5\project5\words.txt");
 
             foreach (string line in lines)
             {
@@ -34,9 +34,19 @@ namespace project5
             {
                 string first = new string(word.Skip(0).Take(i).ToArray());
                 string second = new string(word.Skip(i).Take(word.Length - i).ToArray());
-                Console.WriteLine("FIRST: " + first + " SECOND: " + second);
-                if (words.Contains(first) && words.Contains(second))
-                { if (anagram(first, words)&& anagram(second, words)) { Console.WriteLine("FIRST: " + first + " SECOND: " + second); found = true; } }
+                //  Console.WriteLine("FIRST: " + first + " SECOND: " + second);
+                // if (words.Contains(first) && words.Contains(second))
+                while (anagram(second, words))
+                
+                {
+                   
+                   while (anagram(first, words))
+                   {
+                       Console.WriteLine("FIRST WORD: " + first);
+                       Console.WriteLine("SECOND WORD: " + second);
+                       found = true;
+                   }
+                }
 
             }
 
@@ -51,7 +61,6 @@ namespace project5
 
         private static Boolean anagram(string s, List<string> words)
         {
-            Console.WriteLine("Valid word: "+s);
             //store letters in a list of chars
             char[] c = s.ToCharArray();
             List<char> letters = new List<char>();
@@ -62,34 +71,33 @@ namespace project5
             }
 
 
-            for (var i = 0; i < words.Count; i++) {
-             
+            for (var i = 0; i < words.Count; i++)
+            {
+
                 if (words[i].Length == s.Length)
                 {
-                    Console.WriteLine("Same length: "+ words[i]+" "+s);
+                    List<char> lettersCopy = new List<char>(letters);
                     char[] aux = words[i].ToCharArray();
-                    int ok=0;
-                    
-                    string aux2 = new string(aux);
-                   
-                    for (int j = 0; j < aux.Length; j++)
-                    {
+                    int validLetters = 0;
 
-                        if (!letters.Contains(aux[j]))
+                    for (int k = 0; k < aux.Length; k++)
+                    {
+                        if (lettersCopy.Contains(aux[k]))
                         {
-                            Console.WriteLine("length of aux : "+aux.Length);
-                            ok++;
-                            return false;
-                           
+                            validLetters++;
+                            lettersCopy.Remove(aux[k]);
                         }
-                        if (ok == s.Length) { Console.WriteLine("Found anagram: " + words[i]); return true; }
+
 
                     }
-                 
-                }      
-           
-               }
-        return false;
+                    if (validLetters == s.Length)
+                    {
+                        Console.WriteLine("the word : " + words[i]); words.Remove(words[i]); return true; ;
+                    }
+                }
+
+            }
+            return false;
         }
     }
 }
