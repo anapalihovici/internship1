@@ -10,7 +10,7 @@ namespace project2
 
     struct employee { public string first_name; public string family_name;};
 
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
