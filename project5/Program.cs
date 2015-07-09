@@ -34,8 +34,6 @@ namespace project5
             {
                 string first = new string(word.Skip(0).Take(i).ToArray());
                 string second = new string(word.Skip(i).Take(word.Length - i).ToArray());
-                //  Console.WriteLine("FIRST: " + first + " SECOND: " + second);
-                // if (words.Contains(first) && words.Contains(second))
                 while (anagram(second, words))
                 
                 {
